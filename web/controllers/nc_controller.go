@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"NCApi/datamodels"
+	"Robotic/datamodels"
 	"encoding/json"
 	"log"
 

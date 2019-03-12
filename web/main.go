@@ -16,7 +16,7 @@ import (
 	"github.com/kataras/iris/middleware/recover"
 
 	//"ehome/datamodels"
-	"NCApi/web/controllers"
+	"Robotic/web/controllers"
 	//grpc "google.golang.org/grpc"
 )
 
@@ -50,7 +50,7 @@ func main() {
 		AllowCredentials: true,
 	})
 
-	mvc.New(app.Party("/Rotation", crs)).Handle(new(controllers.NcController))
+	mvc.New(app.Party("/Rotation", crs)).Handle(new(controllers.RotationController))
 
 	// Method : GET
 	// resource: @base/root/
