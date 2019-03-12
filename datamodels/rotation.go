@@ -90,3 +90,18 @@ func (r *Rotation) InitFixedAngles() RMatrix {
 	r.RMatrix = res
 	return res
 }
+
+//FixedAnglesInverse : calculate the alpha , betta and gamma from the rotation Matrix in the inverse fixed angles way
+func (r *Rotation) FixedAnglesInverse(m *RMatrix) Rotation {
+
+	return *r
+}
+
+//InitFixedAnglesInverse : calculate the alpha , betta and gamma from the rotation Matrix in the inverse fixed angles way , by it's preset parameters
+func (r *Rotation) InitFixedAnglesInverse() (gamma float64, betta float64, alpha float64) {
+	r.Betta = math.Atan2(-r.RMatrix.Value[2][0], math.Sqrt(math.Pow(r.RMatrix.Value[0][0], 2)+math.Pow(r.RMatrix.Value[1][0], 2)))
+	cB := math.Cos(r.Betta)
+	r.Alpha = math.Atan2(r.RMatrix.Value[1][0]/cB, r.RMatrix.Value[0][0]/cB)
+	r.Gamma = math.Atan2(r.RMatrix.Value[2][1]/cB, r.RMatrix.Value[2][2]/cB)
+	return r.Gamma, r.Betta, r.Alpha
+}
