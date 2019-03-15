@@ -40,6 +40,21 @@ func (c *RotationController) Get(ctx iris.Context) {
 	q, _ = json.Marshal(R2)
 	ctx.Write(q)
 
+	R2.InitEulerAnglesInverse()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 2 Inverse Euler Angles</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
+	R2.InitEulerAngles()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 2 Euler</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
+	R2.InitEulerAnglesInverse()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 2 Inverse Euler Angles</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
 }
 func (c *RotationController) GetHomework(ctx iris.Context) {
 	var req map[string]string
@@ -71,4 +86,22 @@ func (c *RotationController) GetHomework(ctx iris.Context) {
 	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 2 Inverse Fixed Angles</h1>")
 	q, _ = json.Marshal(R2)
 	ctx.Write(q)
+
+	R2.InitEulerAnglesInverse()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 3 Inverse Euler Angles</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
+	R2.InitEulerAngles()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 4 Euler</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
+	R2.InitEulerAnglesInverse()
+	ctx.WriteString("\n\n<h1> calculete angles from Rotation Matix step 3 Inverse Euler Angles</h1>")
+	q, _ = json.Marshal(R2)
+	ctx.Write(q)
+
+	
+
 }
