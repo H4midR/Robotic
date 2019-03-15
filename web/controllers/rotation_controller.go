@@ -47,12 +47,14 @@ func (c *RotationController) GetHomework(ctx iris.Context) {
 	q, _ := json.Marshal(req)
 	ctx.WriteString("\n\n<h1> request was :</h1>")
 	ctx.Write(q)
+	//reading angles
+	alpha := helperfunctions.Deg2Rad(helperfunctions.Str2Num(req["alpha"]))
+	betta := helperfunctions.Deg2Rad(helperfunctions.Str2Num(req["betta"]))
+	gamma := helperfunctions.Deg2Rad(helperfunctions.Str2Num(req["gamma"]))
+	ctx.WriteString("<br> and data is")
+	ctx.Writef("<br>alpha %s = %f rad (around Z)<br>betta %s = %f rad (around Y)<br>gamma %s = %f rad (around X)<br>", req["alpha"], alpha, req["betta"], betta, req["gamma"], gamma)
 
 	R := datamodels.Rotation{}
-	//reading angles
-	alpha := helperfunctions.Rad2Deg(helperfunctions.Str2Num(req["alpha"]))
-	betta := helperfunctions.Rad2Deg(helperfunctions.Str2Num(req["betta"]))
-	gamma := helperfunctions.Rad2Deg(helperfunctions.Str2Num(req["gamma"]))
 	//seting angles and calculate the rotation matirx
 	R.FixedAngles(gamma, betta, alpha)
 	//writing data
